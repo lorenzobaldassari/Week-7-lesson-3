@@ -1,6 +1,7 @@
 const container = document.getElementById(`container`);
 const row = document.getElementById(`row`);
-
+const ol = document.getElementById(`ol`);
+let tot=0
 fetch(`https://striveschool-api.herokuapp.com/books`)
   .then((res) => {
     if (res.ok) {
@@ -17,7 +18,7 @@ fetch(`https://striveschool-api.herokuapp.com/books`)
   })
   .then((library) => {
     for (i = 0; i < 22; i++) {
-      console.log("library", library);
+      //   console.log("library", library);
       const col = document.createElement(`div`);
       col.classList.add(`col-12`);
       col.classList.add(`col-sm-6`);
@@ -36,8 +37,8 @@ fetch(`https://striveschool-api.herokuapp.com/books`)
       //   card.style.height = `580px`;
       //   img.setAttribute("height", `450px`);
       img.src = library[i].img;
-      console.log(library[i].img);
-      console.log(img.src);
+      //   console.log(library[i].img);
+      //   console.log(img.src);
       let title = document.createElement(`h5`);
       title.classList.add(`card-title`);
       title.classList.add(`mt-3`);
@@ -61,7 +62,7 @@ fetch(`https://striveschool-api.herokuapp.com/books`)
       discard.classList.add(`btn`);
       discard.classList.add(`btn-primary`);
       discard.classList.add(`button1`);
-      discard.innerText=`Delete`
+      discard.innerText = `Delete`;
       discard.addEventListener(`click`, function (event) {
         // event.card.classList.add(`none`);
         this.parentElement.parentElement.remove();
@@ -73,5 +74,20 @@ fetch(`https://striveschool-api.herokuapp.com/books`)
       card.appendChild(discard);
       col.appendChild(card);
       row.appendChild(col);
+
+      const addToChart = document.createElement(`button`);
+      addToChart.classList.add(`btn`);
+      addToChart.classList.add(`btn-primary`);
+      addToChart.classList.add(`button2`);
+      addToChart.innerText = `Add To Chart`;
+      card.appendChild(addToChart);
+
+      addToChart.addEventListener(`click`, function (event) {
+        const li = document.createElement(`li`);
+        li.innerText = library[i].title;
+        console.log(library[i].title);
+        ol.appendChild(li);
+        
+      });
     }
   });
