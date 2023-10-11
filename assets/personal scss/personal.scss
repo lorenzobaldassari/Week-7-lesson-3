@@ -1,0 +1,33 @@
+@import 'scss/Custom/custom_bootstrap';  
+
+@media screen and (max-width:576px){ 
+    img{
+        height:490px !important ;
+    }
+    .card1{
+        height: 650px !important;
+    }
+
+}
+@media screen and (min-width:576px){ 
+.card1{
+    height: 650px !important;
+}
+img{
+    height:450px !important ;
+}}
+
+
+.none {
+    display:none
+
+}
+.button1{
+    width: 120px;
+    font-size: 1em;
+position: absolute;
+bottom: 0;
+left: 0;
+margin-bottom: 1em;
+margin-left: 2em;
+}
